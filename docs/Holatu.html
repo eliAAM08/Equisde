@@ -1,1 +1,258 @@
-
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corazón Azul Neón</title>
+    <style>
+        body {
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+        
+        .heart {
+            position: relative;
+            width: 120px;
+            height: 110px;
+            background-color: #00a2ff; /* Azul sólido */
+            transform: rotate(-45deg);
+            box-shadow: 
+                0 0 40px #00a2ff,
+                0 0 60px #00a2ff,
+                0 0 80px #00a2ff,
+                0 0 100px #00a2ff;
+            animation: neon-glow 1.2s ease-in-out infinite alternate;
+        }
+        
+        .heart:before,
+        .heart:after {
+            content: "";
+            position: absolute;
+            width: 120px;
+            height: 110px;
+            background-color: #00a2ffff; /* Azul sólido */
+            border-radius: 50%;
+        }
+        
+        .heart:before {
+            top: -60px;
+            left: 0;
+        }
+        
+        .heart:after {
+            top: 0;
+            left: 60px;
+        }
+        
+        @keyframes neon-glow {
+            from {
+                box-shadow: 
+                    0 0 30px #af00ff,
+                    0 0 40px #0000d1,
+                    0 0 50px #0066ff,
+                    0 0 60px #0066ff,
+                    0 0 70px #0066ff;
+            }
+            to {
+                box-shadow: 
+                    0 0 40px #0066ff,
+                    0 0 60px ##1b1bff,
+                    0 0 80px #0066ff,
+                    0 0 100px #0066ff,
+                    0 0 120px ##0066ff;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="heart"></div>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Botón desplazado hacia abajo</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            /* Alineación vertical: centrado pero con margen superior */
+            align-items: flex-start; /* Cambiado de 'center' a 'flex-start' */
+            padding-top: 150px; /* Ajusta este valor para mover el botón más abajo */
+        }
+        
+        #miBoton {
+            position:absolute;
+            top:60%;
+            left:50%;
+            transform:translateX(-50%);
+            font-size: 16px;
+            background-color: #5d0101;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        #miBoton:hover {
+            background-color: #5d0101;
+        }
+        
+        /* Estilo para el modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.4);
+        }
+        
+        .modal-contenido {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 400px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            animation: aparecer 0.3s;
+        }
+        
+        @keyframes aparecer {
+            from {opacity: 0; transform: translateY(-20px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+        
+        .cerrar {
+            color: #ff5705;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .cerrar:hover {
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <!-- Botón posicionado un poco más abajo del centro -->
+    <button id="miBoton">Abrir Ventana</button>
+    
+    <!-- El modal -->
+    <div id="miModal" class="modal">
+        <!-- Contenido del modal -->
+        <div class="modal-contenido">
+            <span class="cerrar">&times;</span>
+            <h2>hola gafo</h2>
+            <p>Mira mi primer html, este lo hice para decirte especificamente que te vayas a bañar, borrachito.</p>
+        </div>
+    </div>
+    
+    <script>
+        // Obtener elementos del DOM
+        var modal = document.getElementById("miModal");
+        var btn = document.getElementById("miBoton");
+        var span = document.getElementsByClassName("cerrar")[0];
+        
+        // Cuando el usuario hace clic en el botón, abrir el modal
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+        
+        // Cuando el usuario hace clic en la X, cerrar el modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+        
+        // Cuando el usuario hace clic fuera del modal, cerrarlo
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lluvia de Estrellas</title>
+    <style>
+        body {
+            margin: 120;
+            padding: 0;
+            background-color: #000;
+            overflow: hidden;
+            height: 100vh;
+        }
+        
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background-color: #baf4ff;
+            border-radius: 50%;
+            animation: fall linear infinite;
+        }
+        
+        @keyframes fall {
+            from {
+                transform: translateY(-100vh);
+            }
+            to {
+                transform: translateY(100vh);
+            }
+        }
+    </style>
+</head>
+<body>
+    <script>
+        function createStars() {
+            const numStars = 100;
+            
+            for (let i = 0; i < numStars; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                
+                // Posición aleatoria en el eje X
+                const left = Math.random() * 100;
+                star.style.left = `${left}vw`;
+                
+                // Retraso aleatorio en la animación
+                const delay = Math.random() * 0;
+                star.style.animationDelay = `${delay}s`;
+                
+                // Duración de la animación (velocidad de caída)
+                const duration = 2 + Math.random() * 3;
+                star.style.animationDuration = `${duration}s`;
+                
+                // Tamaño aleatorio
+                const size = 1 + Math.random() * 2;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                
+                // Opacidad aleatoria
+                const opacity = 0.5 + Math.random() * 0.5;
+                star.style.opacity = opacity;
+                
+                document.body.appendChild(star);
+            }
+        }
+        
+        // Crear estrellas cuando se carga la página
+        window.onload = createStars;
+    </script>
+</body>
+  </html>
